@@ -9,14 +9,7 @@ public class Museum {
     private String hours;
     private String city;
     private int icon;
-
-    public int getIcon() {
-        return icon;
-    }
-
-    public void setIcon(int icon) {
-        this.icon = icon;
-    }
+    private int photo;
 
     public Museum() {
     }
@@ -68,4 +61,22 @@ public class Museum {
     public void setCity(String city) {
         this.city = city;
     }
+
+    public int getIcon() {
+        return icon;
+    }
+
+    public void setIcon(int icon) {
+        this.icon = icon;
+    }
+
+    public int getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(int photo) {
+        this.photo = photo;
+    }
+
+
 }

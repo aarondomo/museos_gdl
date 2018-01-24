@@ -20,7 +20,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Museum museum1 = new Museum("nombre","direccion","telefono","horario","ciudad");
+        initializeMuseums();
+
+        // get the reference of RecyclerView
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        // set a LinearLayoutManager with default vertical orientation
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        //  call the constructor of CustomAdapter to send the reference and data to Adapter
+        MuseumsAdapter customAdapter = new MuseumsAdapter(MainActivity.this, museums);
+        recyclerView.setAdapter(customAdapter); // set the Adapter to RecyclerView
+
+    }
+
+    private void initializeMuseums(){
+        //Museum museum1 = new Museum("nombre","direccion","telefono","horario","ciudad");
         Museum museum2 = new Museum("Instituto Cultural Cabañas ","Cabañas #8, Plaza Tapatía, Centro. ","(01 33) 3668-1647 y 3668-1640 ","Martes a sábado de 10:00 a 18:00 horas y domingo de 10:00 a 15:00 horas.  ","Guadalajara, Jalisco, México.");
         Museum museum3 = new Museum("Museo Regional de Guadalajara ","Calle Liceo #60. Zona Centro. ","(01 33) 3614-9957 ","Martes a sábado de 9:00 a 17:30 horas y domingos de las 9:00 a las 16:30 horas.  ","Guadalajara, Jalisco, México");
         Museum museum4 = new Museum("Museo de Paleontología de Guadalajara ","Avenida R. Michel #520. Colonia San Carlos. Núcleo Parque Agua Azul. ","(01 33) 3619-7043 y 3619-5548 ","Martes a sábado de 10:00 a 18:00 horas y domingo de 11:00 a 18:00 horas.  ","Guadalajara, Jalisco, México.");
@@ -43,9 +57,14 @@ public class MainActivity extends AppCompatActivity {
         Museum museum21 = new Museum("Museo de Ripley ","Morelos #217. Colonia Centro. ","(01 33) 3614-8487 ","Abierto todos los días de 11:00 a 20:00 horas.  ","Guadalajara, Jalisco, México.");
         Museum museum22 = new Museum("Museo Raúl Anguiano ","Av. Mariano Otero #375, Colonia Moderna. ","52 (33) 1377 7909 y 08 ","Martes a domingo de 10:00 a 18:00 hrs.  ","Guadalajara, Jalisco, México.");
 
-        museum1.setIcon(R.drawable.ic_launcher_background);
+        museum2.setIcon(R.drawable.logo_cabanas1);
+        museum2.setPhoto(R.drawable.cabanas);
 
-        museums.add(museum1);
+        museum3.setIcon(R.drawable.icon_museo_regional_gdl);
+        museum3.setPhoto(R.drawable.museo_regional_de_guadalajara);
+
+
+        //museums.add(museum1);
         museums.add(museum2);
         museums.add(museum3);
         museums.add(museum4);
@@ -67,15 +86,5 @@ public class MainActivity extends AppCompatActivity {
         museums.add(museum20);
         museums.add(museum21);
         museums.add(museum22);
-
-        // get the reference of RecyclerView
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        // set a LinearLayoutManager with default vertical orientation
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
-        //  call the constructor of CustomAdapter to send the reference and data to Adapter
-        MuseumsAdapter customAdapter = new MuseumsAdapter(MainActivity.this, museums);
-        recyclerView.setAdapter(customAdapter); // set the Adapter to RecyclerView
-
     }
 }

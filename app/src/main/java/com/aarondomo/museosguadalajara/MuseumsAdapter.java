@@ -2,7 +2,6 @@ package com.aarondomo.museosguadalajara;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +19,8 @@ public class MuseumsAdapter extends RecyclerView.Adapter<MuseumsAdapter.ViewHold
     private Context context;
 
     public MuseumsAdapter(Context context, List<Museum> museums) {
-        this.museums = museums;
         this.context = context;
+        this.museums = museums;
     }
 
     @Override
@@ -34,16 +33,20 @@ public class MuseumsAdapter extends RecyclerView.Adapter<MuseumsAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
 
-        // set the data in items
-        holder.name.setText(museums.get(position).getName());
-        holder.hours.setText(museums.get(position).getHours());
+        Museum museum = museums.get(position);
 
-        holder.museumIcon.setImageResource(museums.get(position).getIcon());
+        // set the data in items
+        holder.icon.setImageResource(museum.getIcon());
+        holder.title.setText(museum.getName());
+        holder.subtitle.setText(museum.getPhone());
+
+        holder.mainImage.setImageResource(museum.getPhoto());
+
         // implement setOnClickListener event on item view.
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // display a toast with person name on item click
+                // display a toast with person title on item click
                 Toast.makeText(context, museums.get(position).getName(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -55,22 +58,22 @@ public class MuseumsAdapter extends RecyclerView.Adapter<MuseumsAdapter.ViewHold
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final ImageView museumIcon;
+        private final ImageView icon;
 
-        private final TextView name;
-        private final TextView hours;
+        private final TextView title;
+        private final TextView subtitle;
 
-        private final CardView cardView;
+        private final ImageView mainImage;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            museumIcon = (ImageView) itemView.findViewById(R.id.museumIcon);
+            icon = (ImageView) itemView.findViewById(R.id.iconMuseum);
 
-            cardView = (CardView) itemView.findViewById(R.id.museumCardView);
+            title = (TextView) itemView.findViewById(R.id.title_text);
+            subtitle = (TextView) itemView.findViewById(R.id.subtitle_text);
 
-            name = (TextView) itemView.findViewById(R.id.name);
-            hours = (TextView) itemView.findViewById(R.id.hours);
+            mainImage = (ImageView)itemView.findViewById(R.id.mainImage);
 
 
         }

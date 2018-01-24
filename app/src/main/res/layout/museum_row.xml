@@ -9,71 +9,117 @@
     items for a single row of RecyclerView
     -->
     <android.support.v7.widget.CardView
-        android:id="@+id/museumCardView"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/CardView.Light"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp">
 
-        <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        <android.support.constraint.ConstraintLayout
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/museumIcon"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/guideline"
-                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/iconMuseum"
+                android:contentDescription="icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="12dp"
+                android:padding="4dp"
+                android:scaleType="centerCrop"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.487" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/mainImage"
+                app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
+                android:id="@+id/title_text"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:textColor="#000"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.128"
-                app:layout_constraintStart_toStartOf="@+id/guideline"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="16dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="#DE000000"
+                app:layout_constraintTop_toTopOf="@+id/iconMuseum"
+                app:layout_constraintStart_toEndOf="@+id/iconMuseum"
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
-                android:id="@+id/hours"
-                android:layout_width="wrap_content"
+                android:id="@+id/subtitle_text"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:textColor="#000"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="4dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="#8A000000"
+                app:layout_constraintStart_toEndOf="@+id/iconMuseum"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.15"
-                app:layout_constraintStart_toStartOf="@+id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/name" />
+                app:layout_constraintBottom_toBottomOf="@+id/iconMuseum" />
 
-            <android.support.constraint.Guideline
-                android:id="@+id/guideline"
+            <ImageView
+                android:id="@+id/mainImage"
+                android:contentDescription="main image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="12dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="H,16:9"
+                app:layout_constraintTop_toBottomOf="@+id/iconMuseum"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/museumDescription"/>
+
+            <TextView
+                android:id="@+id/museumDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:lineSpacingExtra="8dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#DE000000"
+                app:layout_constraintTop_toBottomOf="@+id/mainImage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/action_button_1"/>
+
+            <Button
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/action_button_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="97dp" />
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp"
+                android:minWidth="0dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:textColor="#DE000000"
+                app:layout_constraintTop_toBottomOf="@+id/museumDescription"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <Button
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/action_button_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:minWidth="0dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:textColor="#DE000000"
+                app:layout_constraintTop_toTopOf="@+id/action_button_1"
+                app:layout_constraintStart_toEndOf="@+id/action_button_1" />
 
         </android.support.constraint.ConstraintLayout>
 
     </android.support.v7.widget.CardView>
-
 
 </LinearLayout>
